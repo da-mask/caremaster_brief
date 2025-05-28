@@ -1,6 +1,8 @@
 <?php
 
-use App\Models\User;
+use App\Models\{ Company, User };
+
+use function Pest\Laravel\actingAs;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
@@ -10,9 +12,9 @@ test('guests are redirected to the login page', function () {
 });
 
 test('authenticated users can visit the dashboard', function () {
+    /** @var User $user */
     $user = User::factory()->create();
-    $this->actingAs($user);
-
-    $response = $this->get('/dashboard');
-    $response->assertStatus(200);
+    actingAs($user)
+        ->get('/dashboard')
+        ->assertStatus(200);
 });
