@@ -16,5 +16,7 @@
 </script>
 
 <template>
-    
+    <Head title="Edit Company" />
+    <AppLayout :breadcrumbs="breadcrumbs">
+    </AppLayout>
 </template>
