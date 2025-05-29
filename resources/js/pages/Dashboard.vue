@@ -4,7 +4,6 @@
     import { Head } from '@inertiajs/vue3';
     import PlaceholderPattern from '../components/PlaceholderPattern.vue';
     import DashboardCounter from '../components/DashboardCounter.vue';
-    import { type Company } from '@/types/carmaster';
 
     const breadcrumbs: BreadcrumbItem[] = [
         {
@@ -13,8 +12,8 @@
         },
     ];
     defineProps<{ 
-        companies?: Company[] 
-        employees?: Employee[] 
+        company_count: number 
+        employee_count: number 
     }>();
 </script>
 
@@ -28,14 +27,14 @@
                     <DashboardCounter 
                         title="Total Companies" 
                         description="Total number of companies in the system" 
-                        :count= companies.length
+                        :count="company_count"
                         />
                 </div>
                 <div class="relative overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
                     <DashboardCounter 
                         title="Total Employees" 
                         description="Total number of employees in the system" 
-                        :count= employees.length
+                        :count="employee_count"
                         />
                 </div>
             </div>
