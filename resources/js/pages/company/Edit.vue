@@ -49,67 +49,75 @@
     <Head title="Edit Company" />
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4 text-2xl">
-            <form @submit.prevent="submit">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Label for="name">
-                        Name
-                        <Input id="name" v-model="form.name" type="text" />
-                        <InputError :message="form.errors.name" />
-                    </Label>
-                    <Label for="abn">
-                        ABN
-                        <Input id="abn" v-model="form.abn" type="text" />
-                        <InputError :message="form.errors.abn" />
-                    </Label>
-                    <Label for="email">
-                        Email
-                        <Input id="email" v-model="form.email" type="email" />
-                        <InputError :message="form.errors.email" />
-                    </Label>
-                    <Label for="address">
-                        Address
-                        <Input id="address" v-model="form.address" type="text" />
-                        <InputError :message="form.errors.address" />
-                    </Label>
+            <div class="grid auto-rows-min gap-4 md:grid-cols-2">
+                <div class="grid gap-4">
+                    <div class="relative overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border p-4">
+                        <HeadingSmall title="Edit Company" description="Update the company details below and click Update Company to save changes" class="mb-6"/>
+                        <form @submit.prevent="submit">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <Label for="name">
+                                    Name
+                                    <Input id="name" v-model="form.name" type="text" />
+                                    <InputError :message="form.errors.name" />
+                                </Label>
+                                <Label for="abn">
+                                    ABN
+                                    <Input id="abn" v-model="form.abn" type="text" />
+                                    <InputError :message="form.errors.abn" />
+                                </Label>
+                                <Label for="email">
+                                    Email
+                                    <Input id="email" v-model="form.email" type="email" />
+                                    <InputError :message="form.errors.email" />
+                                </Label>
+                                <Label for="address">
+                                    Address
+                                    <Input id="address" v-model="form.address" type="text" />
+                                    <InputError :message="form.errors.address" />
+                                </Label>
+                            </div>
+                            <div class="flex my-6 gap-4">
+                                <Button type="submit">
+                                    Update Company
+                                </Button>
+                                <Button as-child variant="secondary" type="button">
+                                    <Link :href="route('employees.create',{company_id: company.id})">
+                                        Add Employee
+                                    </Link>
+                                </Button>
+                            </div>
+                        </form>
+                    </div>     
+             
+                    <div class="relative overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border p-4">
+                       <HeadingSmall title="Employees" description="List of employees for this company" class="mb-6"/>
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Name</TableHead>
+                                    <TableHead>Email</TableHead>
+                                    <TableHead>Phone</TableHead>
+                                    <TableHead>Actions</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                <TableRow v-for="employee in employees" :key="employee.id">
+                                    <TableCell>{{ employee.first_name }} {{ employee.last_name }}</TableCell>
+                                    <TableCell>{{ employee.email }}</TableCell>
+                                    <TableCell>{{ employee.phone }}</TableCell>
+                                    <TableCell>
+                                        <Button as-child variant="destructive">
+                                            <Link :href="route('employees.destroy', employee.id)" method="delete">
+                                                Delete
+                                            </Link>
+                                        </Button>
+                                    </TableCell>
+                                </TableRow>
+                            </TableBody>
+                        </Table>
+                    </div>
                 </div>
-                <div class="flex my-6 gap-4">
-                    <Button type="submit">
-                        Update Company
-                    </Button>
-                    <Button as-child variant="secondary" type="button">
-                        <Link :href="route('employees.create',{company_id: company.id})">
-                            Add Employee
-                        </Link>
-                    </Button>
-                </div>
-            </form>
-        </div>
-        <div class="flex justify-center p-4">
-            <Table>
-                <TableHeader>
-                    <TableRow>
-                        <TableHead>Name</TableHead>
-                        <TableHead>Email</TableHead>
-                        <TableHead>Phone</TableHead>
-                        <TableHead>Actions</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    <TableRow v-for="employee in employees" :key="employee.id">
-                        <TableCell>{{ employee.first_name }} {{ employee.last_name }}</TableCell>
-                        <TableCell>{{ employee.email }}</TableCell>
-                        <TableCell>{{ employee.phone }}</TableCell>
-                        <TableCell>
-                           
-                            <Button as-child variant="destructive">
-                                <Link :href="route('employees.destroy', employee.id)" method="delete">
-                                    Delete
-                                </Link>
-                            </Button>
-                        </TableCell>
-                    </TableRow>
-                </TableBody>
-            </Table>
+            </div>
         </div>
     </AppLayout>
 </template>

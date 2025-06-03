@@ -1,5 +1,7 @@
 <?php
 
+use Inertia\Testing\AssertableInertia as Assert;
+
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -14,3 +16,12 @@
 pest()->extend(Tests\TestCase::class)
     ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
     ->in('Feature');
+
+pest()->extend(Tests\TestCase::class)
+    ->in('Unit');
+
+expect()->extend('toBeInertiaView', function (string $view) {
+    return $this->value
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page->component($view));
+});

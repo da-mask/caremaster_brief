@@ -9,19 +9,21 @@
     import { Label } from '@/components/ui/label'
     import { Button } from '@/components/ui/button'
     import { type Employee } from '@/types/caremaster';
-    const breadcrumbs: BreadcrumbItem[] = [
-        {
-            title: 'Employees',
-            href: route('employees.index'),
-        },
-        {
-            title: 'Create',
-            href: route('companies.create'),
-        }
-    ];
+    
     const props = defineProps<{ 
         company_id: number
     }>();
+    
+    const breadcrumbs: BreadcrumbItem[] = [
+        {
+            title: 'Companies',
+            href: route('companies.index'),
+        },
+        {
+            title: 'Company',
+          
+        }
+    ];
     
     const form = useForm<Employee>({
         first_name: '',
@@ -41,9 +43,8 @@
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4 text-2xl">
             <div class="grid auto-rows-min gap-4 md:grid-cols-2">
-                <div class="">
-                    <HeadingSmall title="Create Employee" description="Fill in the form below to create a new employee" />
-
+                <div class="relative overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border p-4">
+                    <HeadingSmall title="Create Employee" class="mb-6" />
                     <form @submit.prevent="submit" class="space-y-6">
                         <div class="grid gap-2">
                             <Label for="first_name">First Name</Label>
