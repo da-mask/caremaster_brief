@@ -30,7 +30,7 @@
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4 text-2xl">
             <div class="grid auto-rows-min gap-4 md:grid-cols-2">
-                <div class="relative overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
+                <div class="relative overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border p-4">
                     <Table>
                         <TableHeader>
                             <TableRow>
@@ -55,15 +55,17 @@
                                 <TableCell>{{ company.employees_count }}</TableCell>
                                 <TableCell>
                                     <Button as-child variant="secondary">
-                                        <Link :href="route('companies.edit', company.id)">Edit</Link>
+                                        <Link :href="route('companies.edit', company.id)">Edit Company</Link>
                                     </Button>
                                 </TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>
-                    <Button as-child variant="secondary" class="my-4">
-                        <Link :href="route('companies.create')">Add Company</Link>
-                    </Button>
+                    <div class="pb-4">
+                        <Button as-child variant="secondary" >
+                            <Link :href="route('companies.create')">Create a Company</Link>
+                        </Button>
+                    </div>
                 </div>
             </div>
         </div>

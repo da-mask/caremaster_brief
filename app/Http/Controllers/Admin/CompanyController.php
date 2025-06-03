@@ -26,7 +26,7 @@ class CompanyController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'abn' => 'required|string|max:11|numeric',
+            'abn' => 'required|string|numeric',
             'email' => 'required|email|max:255|unique:companies,email',
             'address' => 'required|string|max:255',
         ]);
@@ -49,7 +49,7 @@ class CompanyController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'abn' => 'required|string|max:11|numeric',
+            'abn' => 'required|string|numeric',
             'email' => 'required|email|max:255|unique:companies,email,',
             'address' => 'required|string|max:255',
         ]);

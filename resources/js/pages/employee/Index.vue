@@ -57,10 +57,10 @@
                             <TableHeader>
                                 <TableRow>
                                     <TableHead class="w-[100px]">
-                                        Namesss
+                                        Name
                                     </TableHead>
                                     <TableHead>Email</TableHead>
-                                    <TableHead>Address</TableHead>
+                                    <TableHead>Phone</TableHead>
                                     <TableHead>Actions</TableHead>
                                 </TableRow>
                             </TableHeader>

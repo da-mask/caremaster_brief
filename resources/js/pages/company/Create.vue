@@ -35,7 +35,7 @@
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4 text-2xl">
             <div class="grid auto-rows-min gap-4 md:grid-cols-2">
-                <div class="">
+                <div class="relative overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border p-4">
                     <HeadingSmall title="Create Company" description="Fill in the form below to create a new company" />
 
                     <form @submit.prevent="submit" class="space-y-6">

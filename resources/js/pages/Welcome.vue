@@ -35,9 +35,12 @@ import { Head, Link } from '@inertiajs/vue3';
         </header>
         <div class="duration-750 starting:opacity-0 flex w-full items-center justify-center opacity-100 transition-opacity lg:grow">
             <main class="flex justify-center w-full max-w-[335px] flex-col-reverse overflow-hidden rounded-lg lg:max-w-4xl lg:flex-row">
-               <div class="border">
-                <img class="h-64 w-64 object-cover rounded-4xl" src='/images/caremaster_logo.jpg' alt="CareMaster Logo"/>
-               </div>
+                <div class="flex flex-col items-center gap-8">
+                    <h1 class="text-4xl font-bold font-sans">Welcome to Daniel's Caremaster Brief App</h1>
+                    <div class="border">
+                        <img class="h-64 w-64 object-cover rounded-4xl" src='/images/caremaster_logo.jpg' alt="CareMaster Logo"/>
+                    </div>
+                </div>
             </main>
         </div>
         <div class="h-14.5 hidden lg:block"></div>
