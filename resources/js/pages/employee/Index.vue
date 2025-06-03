@@ -13,6 +13,7 @@
         TableRow,
     } from '@/components/ui/table'
     import { Button } from '@/components/ui/button'
+    import DashboardCounter from '@/components/DashboardCounter.vue'
 
     const breadcrumbs: BreadcrumbItem[] = [
         {
@@ -27,41 +28,58 @@
 
 <template>
     <Head title="Employees" />
-
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4 text-2xl">
+        <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
             <div class="grid auto-rows-min gap-4 md:grid-cols-2">
                 <div class="relative overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                    <Link :href="route('employees.create')">
-                        <Button>Create Employee</Button>
-                    </Link>
-                    <Table>
-                        <TableCaption>Employee List</TableCaption>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead class="w-[100px]">
-                                    Name
-                                </TableHead>
-                                <TableHead>Email</TableHead>
-                                <TableHead>Address</TableHead>
-                                <TableHead>Actions</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            <TableRow v-for="employee in employees" :key="employee.id" class="">
-                                <TableCell class="font-medium">
-                                    {{ employee.first_name }} {{ employee.last_name }}
-                                </TableCell>
-                                <TableCell>{{ employee.email }}</TableCell>
-                                <TableCell>{{ employee.address }}</TableCell>
-                                <TableCell>
-                                    <Link :href="route('employees.edit', employee.id)" class="text-primary hover:underline">
-                                        Edit
-                                    </Link>
-                                </TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
+                    <DashboardCounter 
+                        title="Total Companies" 
+                        description="Total number of companies in the system" 
+                        count=1
+                        />
+                </div>
+                <div class="relative overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
+                    <DashboardCounter 
+                        title="Total Employees" 
+                        description="Total number of employees in the system" 
+                        count=1
+                        />
+                </div>
+            </div>
+            <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
+                <div class="grid auto-rows-min gap-4 md:grid-cols-2">
+                    <div class="relative overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
+                        <Button as-child>
+                            <Link :href="route('employees.create')">Create Employee</Link>
+                        </Button>
+                        <Table>
+                            <TableCaption>Employee List</TableCaption>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead class="w-[100px]">
+                                        Namesss
+                                    </TableHead>
+                                    <TableHead>Email</TableHead>
+                                    <TableHead>Address</TableHead>
+                                    <TableHead>Actions</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                <TableRow v-for="employee in employees" :key="employee.id" class="">
+                                    <TableCell class="font-medium">
+                                        {{ employee.first_name }} {{ employee.last_name }}
+                                    </TableCell>
+                                    <TableCell>{{ employee.email }}</TableCell>
+                                    <TableCell>{{ employee.phone }}</TableCell>
+                                    <TableCell>
+                                        <Button as-child variant="destructive" >
+                                            <Link :href="route('employees.destroy', employee.id)">Delete</Link>
+                                        </Button>
+                                    </TableCell>
+                                </TableRow>
+                            </TableBody>
+                        </Table>
+                    </div>
                 </div>
             </div>
         </div>

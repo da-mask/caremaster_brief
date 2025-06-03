@@ -18,14 +18,8 @@ const mainNavItems: NavItem[] = [
         title: 'Companies',
         href: '/companies',
         icon: Factory,
-    },
-    {
-        title: 'Employees',
-        href: '/employees',
-        icon: Users,
     }
 ];
-
 const footerNavItems: NavItem[] = [];
 </script>
 

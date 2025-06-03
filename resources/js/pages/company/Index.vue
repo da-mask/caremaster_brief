@@ -27,16 +27,11 @@
 
 <template>
     <Head title="Companies" />
-
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4 text-2xl">
             <div class="grid auto-rows-min gap-4 md:grid-cols-2">
                 <div class="relative overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                    <Link :href="route('companies.create')">
-                        <Button>Create Company</Button>
-                    </Link>
                     <Table>
-                        <TableCaption>Company List</TableCaption>
                         <TableHeader>
                             <TableRow>
                                 <TableHead class="w-[100px]">
@@ -45,6 +40,7 @@
                                 <TableHead>ABN</TableHead>
                                 <TableHead>Email</TableHead>
                                 <TableHead>Address</TableHead>
+                                <TableHead>Employee Count</TableHead>
                                 <TableHead>Actions</TableHead>
                             </TableRow>
                         </TableHeader>
@@ -56,14 +52,18 @@
                                 <TableCell>{{ company.abn }}</TableCell>
                                 <TableCell>{{ company.email }}</TableCell>
                                 <TableCell>{{ company.address }}</TableCell>
+                                <TableCell>{{ company.employees_count }}</TableCell>
                                 <TableCell>
-                                    <Link :href="route('companies.edit', company.id)" class="text-primary hover:underline">
-                                        Edit
-                                    </Link>
+                                    <Button as-child variant="secondary">
+                                        <Link :href="route('companies.edit', company.id)">Edit</Link>
+                                    </Button>
                                 </TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>
+                    <Button as-child variant="secondary" class="my-4">
+                        <Link :href="route('companies.create')">Add Company</Link>
+                    </Button>
                 </div>
             </div>
         </div>

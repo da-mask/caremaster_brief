@@ -9,7 +9,7 @@ import {
   defineProps<{
     title: string
     description: string
-    count?: number
+    count: number
   }>()
  
 </script>

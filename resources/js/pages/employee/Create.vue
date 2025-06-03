@@ -19,11 +19,16 @@
             href: route('companies.create'),
         }
     ];
+    const props = defineProps<{ 
+        company_id: number
+    }>();
+    
     const form = useForm<Employee>({
         first_name: '',
         last_name: '',
         email: '',
-        address: '',
+        phone: '',
+        company_id: props.company_id,
     });
 
     const submit = () => {
@@ -82,21 +87,20 @@
                             <InputError :message="form.errors.email" />
                         </div>
                         <div class="grid gap-2">
-                            <label for="address">Address</label>
+                            <label for="phone">Phone</label>
                             <Input
-                                id="address"
-                                ref="addressInput"
-                                v-model="form.address"
+                                id="phone"
+                                ref="phoneInput"
+                                v-model="form.phone"
                                 type="text"
                                 class="mt-1 block w-full"
                                 autocomplete="address"
-                                placeholder="Employee Address"
+                                placeholder="Employee Phone"
                             />
-                            <InputError :message="form.errors.address" />
+                            <InputError :message="form.errors.phone" />
                         </div>
                         <div class="flex items-center gap-4">
                             <Button :disabled="form.processing">Save employee</Button>
-
                             <Transition
                                 enter-active-class="transition ease-in-out"
                                 enter-from-class="opacity-0"
