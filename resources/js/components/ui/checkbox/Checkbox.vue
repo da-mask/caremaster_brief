@@ -3,7 +3,7 @@ import type { CheckboxRootEmits, CheckboxRootProps } from 'reka-ui'
 import { cn } from '@/lib/utils'
 import { Check } from 'lucide-vue-next'
 import { CheckboxIndicator, CheckboxRoot, useForwardPropsEmits } from 'reka-ui'
-import { computed, type HTMLAttributes } from 'vue'
+import { computed, reactive, type HTMLAttributes } from 'vue'
 
 const props = defineProps<CheckboxRootProps & { class?: HTMLAttributes['class'] }>()
 const emits = defineEmits<CheckboxRootEmits>()
@@ -14,7 +14,7 @@ const delegatedProps = computed(() => {
   return delegated
 })
 
-const forwarded = useForwardPropsEmits(delegatedProps, emits)
+const forwarded = useForwardPropsEmits(reactive(delegatedProps.value), emits)
 </script>
 
 <template>
