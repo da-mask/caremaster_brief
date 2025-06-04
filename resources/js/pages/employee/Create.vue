@@ -11,7 +11,7 @@
     import { type Employee } from '@/types/caremaster';
     
     const props = defineProps<{ 
-        company_id: number
+        company_id: string
     }>();
     
     const breadcrumbs: BreadcrumbItem[] = [
