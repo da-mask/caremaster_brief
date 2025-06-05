@@ -17,9 +17,7 @@ class CompanyController extends Controller
             'email' => 'required|email|max:255|unique:companies,email',
             'address' => 'required|string|max:255',
         ]);
-        Company::create($validated);
-        return to_route('dashboard');
-      
+        Company::create($validated);      
     }
 
     public function update(Request $request, $id)
@@ -32,7 +30,6 @@ class CompanyController extends Controller
         ]);
         Company::findOrFail($id)
             ->update($validated);
-        return to_route('dashboard');
     }   
     
     public function getEmployees($id): JsonResponse

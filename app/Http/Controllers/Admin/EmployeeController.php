@@ -20,7 +20,6 @@ class EmployeeController extends Controller
             'company_id' => 'required',
         ]);
         Employee::create($validated);
-        return to_route('dashboard');
     }
 
     public function destroy($id)
