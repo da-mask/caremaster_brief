@@ -12,8 +12,8 @@ class DashboardController extends Controller
     public function index()
     {
         return Inertia::render('Dashboard', [
-            'company_count' => Company::count(),
-            'employee_count' => Employee::count()
+            'employee_count' => Employee::count(),
+            'companies' => Company::withCount('employees')->get()
         ]);
     }
 }

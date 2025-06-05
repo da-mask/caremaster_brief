@@ -2,19 +2,21 @@
     import AppLayout from '@/layouts/AppLayout.vue';
     import { type BreadcrumbItem } from '@/types';
     import { Head } from '@inertiajs/vue3';
-    import PlaceholderPattern from '../components/PlaceholderPattern.vue';
     import DashboardCounter from '../components/DashboardCounter.vue';
-
+    import DashboardWindowManager from '../components/DashboardWindowManager.vue';
+    import { computed, ref } from 'vue';
     const breadcrumbs: BreadcrumbItem[] = [
         {
             title: 'Dashboard',
             href: '/dashboard',
         },
     ];
-    defineProps<{ 
-        company_count: number 
-        employee_count: number 
+    const props = defineProps<{ 
+        companies: Company[] 
     }>();
+
+    const company_count = computed(() => props.companies.length || 0);
+    const employee_count = computed(() => props.companies.reduce((total, company) => total + company.employees_count, 0));
 </script>
 
 <template>
@@ -38,8 +40,8 @@
                         />
                 </div>
             </div>
-            <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
-                <PlaceholderPattern />
+            <div class="relative flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border p-4 md:min-h-min">
+                <DashboardWindowManager :companies="companies" />
             </div>
         </div>
     </AppLayout>
