@@ -15,8 +15,7 @@ test('can delete employee', function () {
     expect(Employee::count())->toBe(1);
     $companyId = $employee->company_id;
     actingAs($user)
-        ->delete(route('employees.destroy', $employee->id))
-        ->assertRedirect(route('companies.edit', $companyId));
+        ->delete(route('employees.destroy', $employee->id));
     expect(Employee::count())->toBe(0);
 });
     

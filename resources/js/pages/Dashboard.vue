@@ -5,12 +5,7 @@
     import DashboardCounter from '../components/DashboardCounter.vue';
     import DashboardWindowManager from '../components/DashboardWindowManager.vue';
     import { computed, ref } from 'vue';
-    const breadcrumbs: BreadcrumbItem[] = [
-        {
-            title: 'Dashboard',
-            href: '/dashboard',
-        },
-    ];
+   
     const props = defineProps<{ 
         companies: Company[] 
     }>();
@@ -22,7 +17,7 @@
 <template>
     <Head title="Dashboard" />
 
-    <AppLayout :breadcrumbs="breadcrumbs">
+    <AppLayout>
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
             <div class="grid auto-rows-min gap-4 md:grid-cols-2">
                 <div class="relative overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
