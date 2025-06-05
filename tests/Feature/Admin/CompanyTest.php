@@ -12,7 +12,7 @@ it('can have many employees', function () {
    Employee::factory()->count(3)->create([
        'company_id' => $company->id,
    ]);
-   expect($company->employees()->count())->toBe(3);
+   expect($company->employees->count())->toBe(3);
 });
 
 test('can see company on index page', function () {
@@ -20,7 +20,7 @@ test('can see company on index page', function () {
     /** @var User $user */
     $user = User::factory()->create();
     actingAs($user)
-        ->get(route('companies.index'))
+        ->get(route('dashboard'))
     ->assertSee($company->name);
 });
 
