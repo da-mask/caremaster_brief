@@ -7,7 +7,7 @@ const CompanyCreate     = defineAsyncComponent(() => import('./company/CompanyCr
 const CompanyEdit       = defineAsyncComponent(() => import('./company/CompanyEdit.vue'));
 const EmployeeCreate    = defineAsyncComponent(() => import('./employee/EmployeeCreate.vue'));
 
-const props = defineProps<{ 
+defineProps<{ 
     companies?: Company[] 
 }>();
 
