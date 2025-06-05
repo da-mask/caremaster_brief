@@ -2,13 +2,10 @@
 
 use App\Models\User;
 
-use function Pest\Laravel\actingAs;
-
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
+use function Pest\Laravel\{actingAs, get};
 
 test('guests are redirected to the login page', function () {
-    $response = $this->get('/dashboard');
-    $response->assertRedirect('/login');
+    get('/dashboard')->assertRedirect('/login');
 });
 
 test('authenticated users can visit the dashboard', function () {
