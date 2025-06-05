@@ -4,57 +4,41 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
+use Illuminate\Http\{ Request, JsonResponse };
 
 class CompanyController extends Controller
 {
-    public function index()
-    {
-        $companies = Company::withCount('employees')->get();
-        return Inertia::render('company/Index', [
-            'companies' => $companies
-        ]);
-    }
-
-    public function create()
-    {
-        return Inertia::render('company/Create');
-    }
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'abn' => 'required|string|numeric',
             'email' => 'required|email|max:255|unique:companies,email',
             'address' => 'required|string|max:255',
         ]);
-        Company::create($request->all());
-
-        return to_route('companies.index');
-    }
-
-    public function edit($id)
-    {
-        $company = Company::findOrFail($id);
-        $employees = $company->employees;
-        return Inertia::render('company/Edit', [
-            'company' => $company,
-            'employees' => $employees
-        ]);
+        Company::create($validated);
+        return to_route('dashboard');
+      
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'abn' => 'required|string|numeric',
-            'email' => 'required|email|max:255|unique:companies,email,',
+            'email' => 'required|email|max:255|unique:companies,email,'.$id,
             'address' => 'required|string|max:255',
         ]);
         Company::findOrFail($id)
-            ->update($request->all());
-        return to_route('companies.index');
+            ->update($validated);
+        return to_route('dashboard');
     }   
+    
+    public function getEmployees($id): JsonResponse
+    {
+        $company = Company::findOrFail($id);
+        $employees = $company->employees;
+        return response()->json($employees);
+    }
 }
