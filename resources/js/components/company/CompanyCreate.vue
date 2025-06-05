@@ -1,16 +1,9 @@
 <script setup lang="ts">
-import { useForm } from '@inertiajs/vue3';
 import { Button } from '@/components/ui/button';
-import { 
-    Card, 
-    CardContent, 
-    CardDescription, 
-    CardFooter, 
-    CardHeader, 
-    CardTitle 
-} from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useForm } from '@inertiajs/vue3';
 
 const emit = defineEmits(['cancel', 'created']);
 
@@ -43,26 +36,26 @@ function handleCancel() {
             </CardHeader>
             <CardContent>
                 <form @submit.prevent="handleSubmit" class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div class="grid gap-2">
                             <Label for="name">Company Name</Label>
                             <Input id="name" v-model="form.name" type="text" required />
-                            <div v-if="form.errors.name" class="text-red-500 text-sm">{{ form.errors.name }}</div>
+                            <div v-if="form.errors.name" class="text-sm text-red-500">{{ form.errors.name }}</div>
                         </div>
                         <div class="grid gap-2">
                             <Label for="abn">ABN</Label>
                             <Input id="abn" v-model="form.abn" type="text" required />
-                            <div v-if="form.errors.abn" class="text-red-500 text-sm">{{ form.errors.abn }}</div>
+                            <div v-if="form.errors.abn" class="text-sm text-red-500">{{ form.errors.abn }}</div>
                         </div>
                         <div class="grid gap-2">
                             <Label for="email">Email</Label>
                             <Input id="email" v-model="form.email" type="email" required />
-                            <div v-if="form.errors.email" class="text-red-500 text-sm">{{ form.errors.email }}</div>
+                            <div v-if="form.errors.email" class="text-sm text-red-500">{{ form.errors.email }}</div>
                         </div>
                         <div class="grid gap-2">
                             <Label for="address">Address</Label>
                             <Input id="address" v-model="form.address" type="text" required />
-                            <div v-if="form.errors.address" class="text-red-500 text-sm">{{ form.errors.address }}</div>
+                            <div v-if="form.errors.address" class="text-sm text-red-500">{{ form.errors.address }}</div>
                         </div>
                     </div>
                     <div class="flex justify-end space-x-2">

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { type Company } from '@/types/caremaster';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { type Company } from '@/types/caremaster';
 
-defineProps<{ 
-    companies?: Company[] 
+defineProps<{
+    companies?: Company[];
 }>();
 
 const emit = defineEmits(['create', 'edit']);
@@ -46,9 +46,7 @@ function handleCreate() {
                             <TableCell>{{ company.address }}</TableCell>
                             <TableCell>{{ company.employees_count }}</TableCell>
                             <TableCell>
-                                <Button @click="handleEdit(company)" variant="secondary" class="mr-2">
-                                    Edit Company
-                                </Button>
+                                <Button @click="handleEdit(company)" variant="secondary" class="mr-2"> Edit Company </Button>
                             </TableCell>
                         </TableRow>
                     </TableBody>
