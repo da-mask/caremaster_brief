@@ -1,6 +1,34 @@
-# CareMaster Brief
+# Brief Realisation
 
-A web application utilising Laravel, Vue, Inertia.js, and TailwindCSS.
+### Setup
+
+1. Clone the repository and run the following commands:
+
+```bash
+composer install
+npm install
+npm run build
+php artisan key:generate
+php artisan migrate
+```
+
+2. Register a new user at `/register`
+
+3. Login to the admin area at `/login`
+
+4. Create a new company using `Create a Company` button on the dashboard
+
+5. View Company list on the dashboard
+
+6. Create a new employee using `Create a Employee` button on the company edit page
+
+7. View Employee list on the company edit page
+
+8. Edit the company using `Edit Company` button
+
+9. Delete the employee using `Delete` button on the company edit page
+
+## CareMaster Brief
 
 ### Models
 Create the following models with attributes:
