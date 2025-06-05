@@ -18,7 +18,7 @@ class Company extends Model
         'address',
     ];
 
-    public function employees() : HasMany
+    public function employees(): HasMany
     {
         return $this->hasMany(Employee::class);
     }

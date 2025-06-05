@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { useForm } from '@inertiajs/vue3';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useForm } from '@inertiajs/vue3';
 
 const emit = defineEmits(['cancel', 'created']);
 
-const props = defineProps<{ 
-    company: Company
+const props = defineProps<{
+    company: Company;
 }>();
 
 const form = useForm({
@@ -41,26 +41,26 @@ function handleCancel() {
             </CardHeader>
             <CardContent>
                 <form @submit.prevent="handleSubmit" class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                         <div class="grid gap-2">
                             <Label for="first_name">First Name</Label>
                             <Input id="first_name" v-model="form.first_name" type="text" required />
-                            <div v-if="form.errors.first_name" class="text-red-500 text-sm">{{ form.errors.first_name }}</div>
+                            <div v-if="form.errors.first_name" class="text-sm text-red-500">{{ form.errors.first_name }}</div>
                         </div>
                         <div class="grid gap-2">
                             <Label for="last_name">Last Name</Label>
                             <Input id="last_name" v-model="form.last_name" type="text" required />
-                            <div v-if="form.errors.last_name" class="text-red-500 text-sm">{{ form.errors.last_name }}</div>
+                            <div v-if="form.errors.last_name" class="text-sm text-red-500">{{ form.errors.last_name }}</div>
                         </div>
                         <div class="grid gap-2">
                             <Label for="email">Email</Label>
                             <Input id="email" v-model="form.email" type="email" required />
-                            <div v-if="form.errors.email" class="text-red-500 text-sm">{{ form.errors.email }}</div>
+                            <div v-if="form.errors.email" class="text-sm text-red-500">{{ form.errors.email }}</div>
                         </div>
                         <div class="grid gap-2">
                             <Label for="phone">Phone</Label>
                             <Input id="phone" v-model="form.phone" type="text" required />
-                            <div v-if="form.errors.phone" class="text-red-500 text-sm">{{ form.errors.phone }}</div>
+                            <div v-if="form.errors.phone" class="text-sm text-red-500">{{ form.errors.phone }}</div>
                         </div>
                     </div>
                     <div class="flex justify-end space-x-2">

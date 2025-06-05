@@ -19,7 +19,7 @@ class Employee extends Model
         'company_id',
     ];
 
-    public function company() : BelongsTo
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }

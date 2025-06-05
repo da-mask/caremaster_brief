@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
-use Illuminate\Http\{ Request, JsonResponse };
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -17,7 +17,7 @@ class CompanyController extends Controller
             'email' => 'required|email|max:255|unique:companies,email',
             'address' => 'required|string|max:255',
         ]);
-        Company::create($validated);      
+        Company::create($validated);
     }
 
     public function update(Request $request, $id)
@@ -30,12 +30,13 @@ class CompanyController extends Controller
         ]);
         Company::findOrFail($id)
             ->update($validated);
-    }   
-    
+    }
+
     public function getEmployees($id): JsonResponse
     {
         $company = Company::findOrFail($id);
         $employees = $company->employees;
+
         return response()->json($employees);
     }
 }

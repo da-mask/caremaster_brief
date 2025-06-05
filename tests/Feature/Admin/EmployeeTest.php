@@ -2,11 +2,10 @@
 
 namespace Tests\Feature\Company;
 
-use App\Models\{Employee, User};
+use App\Models\Employee;
+use App\Models\User;
 
 use function Pest\Laravel\actingAs;
-
-
 
 test('can delete employee', function () {
     $employee = Employee::factory()->create();
@@ -18,6 +17,3 @@ test('can delete employee', function () {
         ->delete(route('employees.destroy', $employee->id));
     expect(Employee::count())->toBe(0);
 });
-    
-    
-
